@@ -52,3 +52,25 @@ WHERE SALARY = 13000;
 SELECT * FROM EMPLOYEES
 WHERE SALARY = (SELECT MIN(SALARY) FROM (SELECT DISTINCT SALARY FROM EMPLOYEES ORDER BY SALARY DESC)
                 WHERE ROWNUM <6);
+
+--IQ how do you find who is making 37th highest salary
+-- for the Nth highest salary formula is rownum < N+1
+-- for the 37th highest salary rownum < 37+1 = 38
+
+SELECT * FROM EMPLOYEES
+WHERE SALARY = (SELECT MIN(SALARY) FROM (SELECT DISTINCT SALARY FROM EMPLOYEES ORDER BY SALARY DESC)
+                WHERE ROWNUM <38) ;
+
+--HOMEWORK --> display all information who is getting 3rd lowest salary
+
+-- this query gives us all salary ordered by low to high ascending order
+select distinct SALARY from EMPLOYEES order by SALARY;
+
+-- this query gives us 3rd lowest salary ordered by low to high
+select salary from (select distinct SALARY from EMPLOYEES order by SALARY)
+where rownum < 4; -- 2400
+
+-- who is getting 3rd lowest salary
+select * from EMPLOYEES
+where SALARY = (select max(salary) from (select distinct SALARY from EMPLOYEES order by SALARY)
+               where ROWNUM < 4 );
