@@ -66,9 +66,13 @@ WHERE SALARY = (SELECT MIN(SALARY) FROM (SELECT DISTINCT SALARY FROM EMPLOYEES O
 -- this query gives us all salary ordered by low to high ascending order
 select distinct SALARY from EMPLOYEES order by SALARY;
 
--- this query gives us 3rd lowest salary ordered by low to high
+-- this query gives us the first three lowest salary ordered by low to high
 select salary from (select distinct SALARY from EMPLOYEES order by SALARY)
-where rownum < 4; -- 2400
+where rownum < 4;
+
+-- the 3rd lowest salary in the list
+select max(salary) from (select distinct SALARY from EMPLOYEES order by SALARY)
+where ROWNUM < 4; -- 2400
 
 -- who is getting 3rd lowest salary
 select * from EMPLOYEES
