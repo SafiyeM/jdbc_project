@@ -141,9 +141,10 @@ from EMPLOYEES
 where DEPARTMENT_ID is not null
 group by DEPARTMENT_ID;
 
--- 23. Display total salary for each department except department_id 50
+-- 23. Display total salary for each department except department_id 50, where total salary more than 30000
 select DEPARTMENT_ID, sum(SALARY)
 from EMPLOYEES
-where DEPARTMENT_ID  != 50
-group by DEPARTMENT_ID;
+where DEPARTMENT_ID  != 50 -- not in 50 -- <>50
+group by DEPARTMENT_ID
+having sum(salary) > 30000;
 
