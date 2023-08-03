@@ -1,4 +1,4 @@
-package com.cydeo.jdbcTests;
+package com.cydeo.jdbctests;
 
 import java.sql.*;
 
