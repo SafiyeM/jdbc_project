@@ -1,6 +1,7 @@
 package com.cydeo.jdbctests.day02;
 
 import com.cydeo.jdbctests.utility.DB_Util;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class P03_Library_Test {
@@ -20,12 +21,19 @@ public class P03_Library_Test {
 
         DB_Util.runQuery("select count(*) from books");
 
-        String booksCount = DB_Util.getFirstRowFirstColumn();
-        System.out.println(booksCount);
+        String expectedBooksCount = DB_Util.getFirstRowFirstColumn();
+        System.out.println(expectedBooksCount);
+        /*
+        Actual comes from UI with Selenium, cucumber, etc.
+         */
+        String actualBooksCount = "11620";
+        Assertions.assertEquals(expectedBooksCount, actualBooksCount);
 
 
         // close connection
         DB_Util.destroy();
+
+
 
 
 
