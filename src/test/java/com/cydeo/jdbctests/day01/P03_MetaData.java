@@ -1,4 +1,4 @@
-package com.cydeo.jdbcTests.day01;
+package com.cydeo.jdbctests.day01;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ public class P03_MetaData {
 
         Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
         Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = statement.executeQuery("select * from employees");
+        ResultSet rs = statement.executeQuery("select FIRST_NAME,LAST_NAME,SALARY FROM EMPLOYEES WHERE ROWNUM<6");
 
         //DatabaseMetaData
         DatabaseMetaData dbMetaData = conn.getMetaData();
